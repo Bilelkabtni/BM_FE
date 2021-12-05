@@ -1,1 +1,35 @@
-{}
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#275166",
+        "activityBar.activeBorder": "#c15ea0",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#c15ea0",
+        "activityBarBadge.foreground": "#15202b",
+        "titleBar.activeBackground": "#193441",
+        "titleBar.inactiveBackground": "#19344199",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "statusBar.background": "#193441",
+        "statusBarItem.hoverBackground": "#275166",
+        "statusBar.foreground": "#e7e7e7",
+        "activityBar.activeBackground": "#275166"
+    },
+    "debug.javascript.autoAttachFilter": "onlyWithFlag"
+}
