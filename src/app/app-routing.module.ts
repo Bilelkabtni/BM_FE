@@ -1,22 +1,32 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from 'projects/home/src';
-
-import { LoginComponent } from './login/login.component';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadChildren: () =>
+      import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: 'projects',
+    loadChildren: () =>
+      import('../../projects/projects.module').then((m) => m.ProjectsModule),
+  },
+
+  {
+    path: '**',
+    redirectTo: '/',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      onSameUrlNavigation: 'reload',
+      relativeLinkResolution: 'legacy',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

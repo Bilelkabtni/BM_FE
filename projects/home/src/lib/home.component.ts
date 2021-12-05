@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
   public users$: Observable<IUsers[]>;
   public groups$: Observable<IGroups[]>;
   public projects$: Observable<IProjects[]>;
+  
   ngOnInit(): void {
     this.users$ = this.homeService.getUsers();
     this.groups$ = this.homeService.getGroups();
