@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,15 +11,13 @@ import { EMAIL_REGEX } from './email-regex';
     styleUrls: ['./login.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
     loginForm: FormGroup = new FormGroup({
         email: new FormControl('', [Validators.required, Validators.pattern(EMAIL_REGEX)]),
         password: new FormControl('', Validators.required),
     });
 
     constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {}
-
-    ngOnInit(): void {}
 
     get emailField(): ValidationErrors | null {
         return this.loginForm.get('email');
@@ -33,7 +31,6 @@ export class LoginComponent implements OnInit {
         this.authService.login(this.loginForm.value).subscribe((data) => {
             this.tokenStorage.saveToken(data.accessToken);
             this.authService.isAuthenticated$.next(true);
-            console.log('login');
             this.router.navigate(['/projects']);
         });
     }

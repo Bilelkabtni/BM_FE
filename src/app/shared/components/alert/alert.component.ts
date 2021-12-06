@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 type AlertType = 'danger' | 'warning' | 'light' | 'info' | 'dark' | 'success';
 
@@ -6,11 +6,10 @@ type AlertType = 'danger' | 'warning' | 'light' | 'info' | 'dark' | 'success';
     selector: 'app-alert',
     templateUrl: './alert.component.html',
     styleUrls: ['./alert.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent {
     @Input() alertType: AlertType = 'light';
 
     constructor() {}
-
-    ngOnInit(): void {}
 }

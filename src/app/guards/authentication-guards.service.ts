@@ -12,10 +12,7 @@ export class AuthenticationGuardService implements CanActivateChild {
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
             this.isAuthenticated = isAuthenticated;
-            console.log('aaa', this.isAuthenticated);
         });
-
-        console.log('isAuthenticated', this.isAuthenticated);
 
         if (this.isAuthenticated) {
             return true;
