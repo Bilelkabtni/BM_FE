@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   ValidationErrors,
   Validators,
 } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AuthService } from "src/app/services/auth.service";
 import { TokenStorageService } from "src/app/services/token-storage.service";
 import { EMAIL_REGEX } from "./email-regex";
@@ -25,6 +25,12 @@ export class LoginComponent implements OnInit {
     password: new FormControl("", Validators.required),
   });
 
+  constructor(
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {}
 
   get emailField(): ValidationErrors | null {
@@ -36,15 +42,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe((data) => {
       this.tokenStorage.saveToken(data.accessToken);
+      this.authService.isAuthenticated$.next(true);
+      this.router.navigate(["/projects"]);
     });
   }
-
-  constructor(
-    private authService: AuthService,
-    private tokenStorage: TokenStorageService,
-    private formBuilder: FormBuilder
-  ) {}
 }

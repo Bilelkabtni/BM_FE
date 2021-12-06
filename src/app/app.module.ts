@@ -4,7 +4,6 @@ import { BrowserModule } from "@angular/platform-browser";
 import { HomeModule } from "projects/home/src";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { authInterceptorProviders } from "./interceptors/auth-interceptor";
 import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
@@ -18,7 +17,7 @@ import { SharedModule } from "./shared/shared.module";
     SharedModule,
     HomeModule,
   ],
-  providers: [authInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

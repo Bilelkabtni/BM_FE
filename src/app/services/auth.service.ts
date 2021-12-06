@@ -1,16 +1,20 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { LoginApiResponse, User } from '../auth/types/user';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable, Subject } from "rxjs";
+import { ILoginApiResponse, IUser } from "../auth/types/user";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
+  isAuthenticated$: Subject<boolean> = new Subject<false>();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  login(user: User): Observable<LoginApiResponse> {
-    return this.httpClient.post<LoginApiResponse>('http://localhost:3000/login', user);
+  login(user: IUser): Observable<ILoginApiResponse> {
+    return this.httpClient.post<ILoginApiResponse>(
+      "http://localhost:3000/login",
+      user
+    );
   }
 }

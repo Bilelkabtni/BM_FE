@@ -1,8 +1,8 @@
-export interface User {
-    email: string;
-    password: string;
+export interface IUser {
+  email: string;
+  password: string;
 }
 
-export interface LoginApiResponse {
-    accessToken: string
+export interface ILoginApiResponse {
+  accessToken: string;
 }
