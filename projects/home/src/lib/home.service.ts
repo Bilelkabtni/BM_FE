@@ -1,52 +1,55 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 export interface IUsers {
-  email: string;
-  password: string;
-  id: number;
-  first_name: string;
-  last_name: string;
-  gender_id: number;
-  company: string;
-  language: {
-    main: string;
-    secondary: string | null;
-  };
-  createdAt: string;
-  updatedAt: string;
+    email: string;
+    password: string;
+    id: number;
+    first_name: string;
+    last_name: string;
+    gender_id: number;
+    company: string;
+    language: {
+        main: string;
+        secondary: string | null;
+    };
+    createdAt: string;
+    updatedAt: string;
 }
 
 export interface IGroups {
-  id: number;
-  name: string;
-  user_ids: number[];
-  created_at: string;
-  updated_at: string;
+    id: number;
+    name: string;
+    user_ids: number[];
+    created_at: string;
+    updated_at: string;
 }
 
 export interface IProjects {
-  id: number;
-  name: string;
-  group_ids: number[];
-  user_ids: number[];
-  created_at: string;
-  updated_at: string;
+    id: number;
+    name: string;
+    group_ids: number[];
+    user_ids: number[];
+    created_at: string;
+    updated_at: string;
 }
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class HomeService {
-  getUsers() {
-    return this.http.get<IUsers[]>('/api/users');
-  }
+    constructor(private http: HttpClient) {}
 
-  getGroups() {
-    return this.http.get<IGroups[]>('/api/groups');
-  }
+    getUsers(): Observable<IUsers[]> {
+        return this.http.get<IUsers[]>('/api/users');
+    }
 
-  getProjects() {
-    return this.http.get<IProjects[]>('/api/projects');
-  }
+    getGroups(): Observable<IGroups[]> {
+        return this.http.get<IGroups[]>('/api/groups');
+    }
 
-  constructor(private http: HttpClient) {}
+    getProjects(): Observable<IProjects[]> {
+        return this.http.get<IProjects[]>('/api/projects');
+    }
 }
