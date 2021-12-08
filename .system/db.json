@@ -25,11 +25,106 @@
       ],
       "created_at": "2021-04-23T05:39:36Z",
       "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "id": 2,
+      "name": "The ECO Friendly Project",
+      "group_ids": [
+        1
+      ],
+      "user_ids": [
+        1
+      ],
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "id": 3,
+      "name": "The ECO Friendly Project",
+      "group_ids": [
+        1
+      ],
+      "user_ids": [
+        1
+      ],
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "id": 4,
+      "name": "The ECO Friendly Project",
+      "group_ids": [
+        1
+      ],
+      "user_ids": [
+        1
+      ],
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "id": 5,
+      "name": "The ECO Friendly Project",
+      "group_ids": [
+        1
+      ],
+      "user_ids": [
+        1
+      ],
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "id": 6,
+      "name": "The ECO Friendly Project",
+      "group_ids": [
+        1
+      ],
+      "user_ids": [
+        1
+      ],
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
     }
   ],
   "groups": [
     {
       "id": 1,
+      "name": "Awesome group",
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z",
+      "user_ids": []
+    },
+    {
+      "id": 2,
+      "name": "Awesome group",
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z",
+      "user_ids": []
+    },
+    {
+      "id": 3,
+      "name": "Awesome group",
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z",
+      "user_ids": []
+    },
+    {
+      "id": 4,
+      "name": "Awesome group",
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z",
+      "user_ids": []
+    },
+    {
+      "id": 5,
+      "name": "Awesome group",
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z",
+      "user_ids": []
+    },
+    {
+      "id": 6,
       "name": "Awesome group",
       "created_at": "2021-04-23T05:39:36Z",
       "updated_at": "2021-04-23T06:39:36Z",
@@ -51,6 +146,93 @@
       },
       "created_at": "2021-04-23T05:39:36Z",
       "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "email": "amazing2@admin.com",
+      "password": "$2a$10$n.gWinss3EGJNlBsYJf4/.SSSMk5/pwwCOL4ASQqA72vfbQgK1hAS",
+      "id": 2,
+      "first_name": "Amazing",
+      "last_name": "Admin",
+      "gender_id": 1,
+      "company": "Harvey LLC",
+      "language": {
+        "main": "Ndebele",
+        "secondary": null
+      },
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "email": "amazing3@admin.com",
+      "password": "$2a$10$n.gWinss3EGJNlBsYJf4/.SSSMk5/pwwCOL4ASQqA72vfbQgK1hAS",
+      "id": 3,
+      "first_name": "Amazing",
+      "last_name": "Admin",
+      "gender_id": 1,
+      "company": "Harvey LLC",
+      "language": {
+        "main": "Ndebele",
+        "secondary": null
+      },
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "email": "amazing4@admin.com",
+      "password": "$2a$10$n.gWinss3EGJNlBsYJf4/.SSSMk5/pwwCOL4ASQqA72vfbQgK1hAS",
+      "id": 4,
+      "first_name": "Amazing",
+      "last_name": "Admin",
+      "gender_id": 1,
+      "company": "Harvey LLC",
+      "language": {
+        "main": "Ndebele",
+        "secondary": null
+      },
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "email": "amazing5@admin.com",
+      "password": "$2a$10$n.gWinss3EGJNlBsYJf4/.SSSMk5/pwwCOL4ASQqA72vfbQgK1hAS",
+      "id": 5,
+      "first_name": "Amazing",
+      "last_name": "Admin",
+      "gender_id": 1,
+      "company": "Harvey LLC",
+      "language": {
+        "main": "Ndebele",
+        "secondary": null
+      },
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "email": "amazing6@admin.com",
+      "password": "$2a$10$n.gWinss3EGJNlBsYJf4/.SSSMk5/pwwCOL4ASQqA72vfbQgK1hAS",
+      "id": 6,
+      "first_name": "Amazing",
+      "last_name": "Admin",
+      "gender_id": 1,
+      "company": "Harvey LLC",
+      "language": {
+        "main": "Ndebele",
+        "secondary": null
+      },
+      "created_at": "2021-04-23T05:39:36Z",
+      "updated_at": "2021-04-23T06:39:36Z"
+    },
+    {
+      "email": "bilel.kabtni.isi@gmail.com",
+      "password": "$2a$10$3mojQPn9GBCRio1Q3lMGNOtN74K4pys5QXWgZxijX1vyDFPVcMGuW",
+      "first_name": "Bilel",
+      "last_name": "Kabtni",
+      "gender_id": "1",
+      "language": {
+        "main": null,
+        "secondary": null
+      },
+      "id": 7
     }
   ]
 }

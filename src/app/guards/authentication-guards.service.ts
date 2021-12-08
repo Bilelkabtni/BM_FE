@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthenticationGuardService implements CanActivateChild {
-    isAuthenticated: boolean = false;
-    constructor(private router: Router, private authService: AuthService) {}
+    constructor(
+        private router: Router,
+        private authService: AuthService,
+        private tokenStorageService: TokenStorageService
+    ) {}
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
-            this.isAuthenticated = isAuthenticated;
-        });
+        console.log('isAuthenticated', this.tokenStorageService.isAuthenticated());
 
-        if (this.isAuthenticated) {
+        if (this.tokenStorageService.isAuthenticated()) {
             return true;
         } else {
             this.router.navigate(['/login']);

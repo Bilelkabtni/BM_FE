@@ -30,8 +30,7 @@ export class LoginComponent {
     login(): void {
         this.authService.login(this.loginForm.value).subscribe((data) => {
             this.tokenStorage.saveToken(data.accessToken);
-            this.authService.isAuthenticated$.next(true);
-            this.router.navigate(['/projects']);
+            this.router.navigate(['/home']);
         });
     }
 }

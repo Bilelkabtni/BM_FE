@@ -1,0 +1,98 @@
+<main class="form-signin text-center">
+    <form [formGroup]="userForm" (ngSubmit)="createUser()">
+        <h1 class="h3 mb-3 fw-normal">Create User Form</h1>
+        <div class="form-floating">
+            <input
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                formControlName="email"
+                placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+        </div>
+
+        <div class="form-floating">
+            <input
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                formControlName="password"
+                placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <!-- <app-alert alertType="danger" *ngIf="emailField.errors && emailField.touched">
+            <ng-container *ngIf="emailField.errors?.required">This is a required field</ng-container>
+            <ng-container *ngIf="emailField.errors?.pattern">invalid e-mail address</ng-container>
+        </app-alert> -->
+
+        <div class="form-floating">
+            <input
+                type="text"
+                class="form-control"
+                id="floatingFirstName"
+                formControlName="first_name"
+                placeholder="first_name"
+            />
+            <label for="floatingFirstName">first name</label>
+        </div>
+
+        <div class="form-floating">
+            <input
+                type="text"
+                class="form-control"
+                id="floatingLastName"
+                formControlName="last_name"
+                placeholder="last_name"
+            />
+            <label for="floatingLastName">last name</label>
+        </div>
+
+        <div class="form-floating">
+            <select
+                id="floatingGender"
+                formControlName="gender_id"
+                class="form-select"
+                aria-label="Default select example"
+            >
+                <option selected>Gender selection</option>
+                <option [value]="gender.id" *ngFor="let gender of genders$ | async">{{ gender.name }}</option>
+            </select>
+
+            <label for="floatingGender">Gender</label>
+        </div>
+
+        <div formGroupName="language">
+            <div class="form-floating">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="floatingLanguageMain"
+                    formControlName="floatingLanguageMain"
+                    placeholder="Main language"
+                />
+                <label for="floatingLanguageMain">Main language</label>
+            </div>
+            <div class="form-floating">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="floatingLanguageMain"
+                    formControlName="floatingLanguageSecond"
+                    placeholder="Second language"
+                />
+                <label for="floatingLanguageSecond">Second language</label>
+            </div>
+        </div>
+
+        <!-- <app-alert alertType="danger" *ngIf="passwordField.errors && passwordField.touched">
+            <ng-container *ngIf="passwordField.errors?.required">This is a required field</ng-container>
+        </app-alert> -->
+
+        {{ userForm.value | json }}
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Create user</button>
+    </form>
+</main>
