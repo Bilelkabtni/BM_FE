@@ -14,8 +14,6 @@ export class AuthenticationGuardService implements CanActivateChild {
     ) {}
 
     canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        console.log('isAuthenticated', this.tokenStorageService.isAuthenticated());
-
         if (this.tokenStorageService.isAuthenticated()) {
             return true;
         } else {

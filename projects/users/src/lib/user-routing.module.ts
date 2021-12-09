@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
-import { UserListComponent } from './components/user-list/user-list.component';
+import { UsersComponent } from './users.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: UserListComponent,
+        component: UsersComponent,
         children: [
             {
                 path: 'create',

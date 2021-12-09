@@ -13,7 +13,23 @@
     "target": "es2015",
     "lib": ["es2018", "dom"],
     "paths": {
-      "home": ["dist/home/home", "dist/home"]
+      "home": [
+        "dist/home/home",
+        "dist/home",
+        "dist/home/home",
+        "dist/home"
+      ],
+      "users": [
+        "dist/users/users",
+        "dist/users"
+      ],
+      "@home/*": ["projects/home/components/src/lib/*"],
+      "@users/*": ["projects/users/components/src/lib/*"],
+      "@auth/*": ["src/app/auth/*"],
+      "@guards/*": ["src/app/guards/*"],
+      "@interceptors/*": ["src/app/interceptors/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@services/*": ["src/app/services/*"],
     }
   },
   "angularCompilerOptions": {

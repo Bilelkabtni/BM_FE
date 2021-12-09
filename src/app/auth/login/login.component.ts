@@ -16,13 +16,10 @@ export class LoginComponent {
         email: new FormControl('', [Validators.required, Validators.pattern(EMAIL_REGEX)]),
         password: new FormControl('', Validators.required),
     });
-
-    constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {}
-
+    constructor(private authService: AuthService, private router: Router, private tokenStorage: TokenStorageService) {}
     get emailField(): ValidationErrors | null {
         return this.loginForm.get('email');
     }
-
     get passwordField(): ValidationErrors | null {
         return this.loginForm.get('password');
     }

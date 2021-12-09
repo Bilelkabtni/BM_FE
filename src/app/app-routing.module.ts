@@ -9,12 +9,12 @@ const routes: Routes = [
     },
     {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+        loadChildren: () => import('../../projects/home/src/lib/home.module').then((m) => m.HomeModule),
         canActivateChild: [AuthenticationGuardService],
     },
     {
         path: 'users',
-        loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+        loadChildren: () => import('../../projects/users/src/lib/users.module').then((m) => m.UsersModule),
         canActivateChild: [AuthenticationGuardService],
     },
     {

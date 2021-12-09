@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 export interface IUsers {
     email: string;
@@ -39,17 +38,17 @@ export interface IProjects {
     providedIn: 'root',
 })
 export class HomeService {
-    constructor(private http: HttpClient) {}
-
-    getUsers(): Observable<IUsers[]> {
+    getUsers() {
         return this.http.get<IUsers[]>('/api/users');
     }
 
-    getGroups(): Observable<IGroups[]> {
+    getGroups() {
         return this.http.get<IGroups[]>('/api/groups');
     }
 
-    getProjects(): Observable<IProjects[]> {
+    getProjects() {
         return this.http.get<IProjects[]>('/api/projects');
     }
+
+    constructor(private http: HttpClient) {}
 }
