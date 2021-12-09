@@ -6,6 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <app-nav></app-nav>
         <app-content>
             <div class="container">
+                <p>User list</p>
                 <router-outlet></router-outlet>
             </div>
         </app-content>

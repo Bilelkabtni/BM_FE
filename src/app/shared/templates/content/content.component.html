@@ -1,41 +1,38 @@
 <div class="container-fluid">
-  <div class="row">
-    <nav
-      id="sidebarMenu"
-      class="col-md-2 col-lg-2 d-md-block bg-light sidebar collapse"
-    >
-      <div class="position-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active"> Home </a>
-          </li>
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-2 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item active" [routerLink]="['/home']">
+                        <a class="nav-link active" routerLinkActive="active"> Home </a>
+                    </li>
 
-          <li class="nav-item">
-            <a class="nav-link">
-              Users
-              <span class="badge bg-secondary">999</span>
-            </a>
-          </li>
+                    <li class="nav-item" [routerLink]="['/users']">
+                        <a class="nav-link" routerLinkActive="active">
+                            Users
+                            <span class="badge bg-secondary">999</span>
+                        </a>
+                    </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Groups
-              <span class="badge bg-secondary">999</span>
-            </a>
-          </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Groups
+                            <span class="badge bg-secondary">999</span>
+                        </a>
+                    </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Projects
-              <span class="badge bg-secondary">999</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Projects
+                            <span class="badge bg-secondary">999</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4 mt-4">
-      <ng-content></ng-content>
-    </main>
-  </div>
+        <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4 mt-4">
+            <ng-content></ng-content>
+        </main>
+    </div>
 </div>

@@ -12,6 +12,11 @@
             <label for="floatingInput">Email address</label>
         </div>
 
+        <app-alert alertType="danger" *ngIf="!userForm.get('email').valid && userForm.get('email').touched">
+            <ng-container *ngIf="userForm.get('email').errors?.required">This is a required field</ng-container>
+            <ng-container *ngIf="userForm.get('email').errors?.pattern">invalid e-mail address</ng-container>
+        </app-alert>
+
         <div class="form-floating">
             <input
                 type="password"
@@ -23,10 +28,9 @@
             <label for="floatingPassword">Password</label>
         </div>
 
-        <!-- <app-alert alertType="danger" *ngIf="emailField.errors && emailField.touched">
-            <ng-container *ngIf="emailField.errors?.required">This is a required field</ng-container>
-            <ng-container *ngIf="emailField.errors?.pattern">invalid e-mail address</ng-container>
-        </app-alert> -->
+        <app-alert alertType="danger" *ngIf="!userForm.get('password').valid && userForm.get('password').touched">
+            This is a required field
+        </app-alert>
 
         <div class="form-floating">
             <input
@@ -36,8 +40,12 @@
                 formControlName="first_name"
                 placeholder="first_name"
             />
-            <label for="floatingFirstName">first name</label>
+            <label for="floatingFirstName">First name</label>
         </div>
+
+        <app-alert alertType="danger" *ngIf="!userForm.get('first_name').valid && userForm.get('first_name').touched">
+            This is a required field
+        </app-alert>
 
         <div class="form-floating">
             <input
@@ -47,22 +55,25 @@
                 formControlName="last_name"
                 placeholder="last_name"
             />
-            <label for="floatingLastName">last name</label>
+            <label for="floatingLastName">Last name</label>
         </div>
 
+        <app-alert alertType="danger" *ngIf="!userForm.get('last_name').valid && userForm.get('last_name').touched">
+            This is a required field
+        </app-alert>
+
         <div class="form-floating">
-            <select
-                id="floatingGender"
-                formControlName="gender_id"
-                class="form-select"
-                aria-label="Default select example"
-            >
-                <option selected>Gender selection</option>
+            <select id="floatingGender" formControlName="gender_id" class="form-select">
+                <option>Gender selection</option>
                 <option [value]="gender.id" *ngFor="let gender of genders$ | async">{{ gender.name }}</option>
             </select>
 
             <label for="floatingGender">Gender</label>
         </div>
+
+        <app-alert alertType="danger" *ngIf="!userForm.get('gender_id').valid && userForm.get('gender_id').touched">
+            This is a required field
+        </app-alert>
 
         <div formGroupName="language">
             <div class="form-floating">
@@ -70,29 +81,28 @@
                     type="text"
                     class="form-control"
                     id="floatingLanguageMain"
-                    formControlName="floatingLanguageMain"
+                    formControlName="main"
                     placeholder="Main language"
                 />
                 <label for="floatingLanguageMain">Main language</label>
             </div>
+            <app-alert alertType="danger" *ngIf="!userForm.get('language').valid && userForm.get('language').touched">
+                This is a required field
+            </app-alert>
             <div class="form-floating">
                 <input
                     type="text"
                     class="form-control"
                     id="floatingLanguageMain"
-                    formControlName="floatingLanguageSecond"
+                    formControlName="secondary"
                     placeholder="Second language"
                 />
                 <label for="floatingLanguageSecond">Second language</label>
             </div>
         </div>
-
-        <!-- <app-alert alertType="danger" *ngIf="passwordField.errors && passwordField.touched">
-            <ng-container *ngIf="passwordField.errors?.required">This is a required field</ng-container>
-        </app-alert> -->
-
-        {{ userForm.value | json }}
-
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Create user</button>
+        <div class="action d-flex justify-content-end">
+            <button class="w-10 btn btn-primary" type="reset">Cancel</button>
+            <button class="w-10 btn btn-primary" type="submit" [disabled]="!userForm.valid">Create user</button>
+        </div>
     </form>
 </main>

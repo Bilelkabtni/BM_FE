@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IUsers } from '@services/home.service';
 import { Observable } from 'rxjs';
-import { IUsers } from './home.service';
 
 export interface IGenders {
     id: number;

@@ -98,3 +98,17 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
+
+// move to form scss
+.action {
+    margin-top: 25px;
+
+    button {
+        margin-left: 10px;
+    }
+}
+
+input,
+select {
+    margin-bottom: 15px;
+}
