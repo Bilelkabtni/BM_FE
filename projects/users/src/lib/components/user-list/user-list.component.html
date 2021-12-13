@@ -1,10 +1,17 @@
-<div class="col">
-    <h6>Last 5 Users</h6>
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let user of users$ | async | slice: 0:5">
-            {{ user.first_name }} {{ user.last_name }}
-        </li>
-    </ul>
-</div>
+<!-- Todo:: add config interface -->
+<app-table [head]="head" *ngIf="users$ | async as users">
+    <tr *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: page }; let index = index">
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.gender_id }}</td>
+        <td>{{ user.email }}</td>
+        <td (click)="showUserDetails(user.id)">Edit</td>
+        <td (click)="deleteUser(user.id)">X</td>
+    </tr>
+    <pagination-controls *ngIf="users.length > 5" (pageChange)="page = $event"></pagination-controls>
+    <p class="text-center" *ngIf="users.length === 0">No data available</p>
+</app-table>
 
-<button type="button" class="btn btn-primary" [routerLink]="'/users/create'">Add User</button>
+<div class="action d-flex justify-content-end">
+    <button type="button" class="btn btn-primary" [routerLink]="'/users/create'">Add User</button>
+</div>

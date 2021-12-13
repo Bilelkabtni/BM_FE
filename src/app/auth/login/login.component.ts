@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EMPTY } from 'rxjs';
+import { catchError, first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { EMAIL_REGEX } from './email-regex';
@@ -16,7 +18,9 @@ export class LoginComponent {
         email: new FormControl('', [Validators.required, Validators.pattern(EMAIL_REGEX)]),
         password: new FormControl('', Validators.required),
     });
-    constructor(private authService: AuthService, private router: Router, private tokenStorage: TokenStorageService) {}
+
+    showError = false;
+
     get emailField(): ValidationErrors | null {
         return this.loginForm.get('email');
     }
@@ -24,10 +28,22 @@ export class LoginComponent {
         return this.loginForm.get('password');
     }
 
+    constructor(private authService: AuthService, private router: Router, private tokenStorage: TokenStorageService) {}
+
     login(): void {
-        this.authService.login(this.loginForm.value).subscribe((data) => {
-            this.tokenStorage.saveToken(data.accessToken);
-            this.router.navigate(['/home']);
-        });
+        this.showError = false;
+        this.authService
+            .login(this.loginForm.value)
+            .pipe(
+                first(),
+                catchError((_) => {
+                    this.showError = true;
+                    return EMPTY;
+                })
+            )
+            .subscribe((data) => {
+                this.tokenStorage.saveToken(data.accessToken);
+                this.router.navigate(['/home']);
+            });
     }
 }

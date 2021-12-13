@@ -4,6 +4,7 @@ import { UserCreateComponent } from './components/user-create/user-create.compon
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+import { UsersResolverService } from './resolvers/users-resolver.service';
 import { UsersComponent } from './users.component';
 
 const routes: Routes = [
@@ -20,12 +21,18 @@ const routes: Routes = [
                 component: UserCreateComponent,
             },
             {
-                path: 'edit',
+                path: ':id/edit',
                 component: UserEditComponent,
+                resolve: {
+                    user: UsersResolverService,
+                },
             },
             {
-                path: ':/id',
+                path: ':id',
                 component: UserDetailsComponent,
+                resolve: {
+                    data: UsersResolverService,
+                },
             },
         ],
     },
@@ -34,5 +41,6 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
+    providers: [UsersResolverService],
 })
 export class UsersRoutingModule {}

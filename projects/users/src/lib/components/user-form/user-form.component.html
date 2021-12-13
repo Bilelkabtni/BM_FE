@@ -1,6 +1,5 @@
 <main class="form-signin text-center">
-    <form [formGroup]="userForm" (ngSubmit)="createUser()">
-        <h1 class="h3 mb-3 fw-normal">Create User Form</h1>
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
         <div class="form-floating">
             <input
                 type="email"
@@ -100,9 +99,16 @@
                 <label for="floatingLanguageSecond">Second language</label>
             </div>
         </div>
+
+        <app-alert alertType="danger" *ngIf="showError">
+            <ng-container>Something wrong please try again</ng-container>
+        </app-alert>
+
         <div class="action d-flex justify-content-end">
             <button class="w-10 btn btn-primary" type="reset">Cancel</button>
-            <button class="w-10 btn btn-primary" type="submit" [disabled]="!userForm.valid">Create user</button>
+            <button class="w-10 btn btn-primary" type="submit" [disabled]="!userForm.valid">
+                <ng-content></ng-content>
+            </button>
         </div>
     </form>
 </main>

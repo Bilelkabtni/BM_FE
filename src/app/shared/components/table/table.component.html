@@ -1,0 +1,12 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" *ngFor="let item of head">{{ item }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-content select="tr"></ng-content>
+    </tbody>
+</table>
+
+<ng-content select="pagination-controls"></ng-content>

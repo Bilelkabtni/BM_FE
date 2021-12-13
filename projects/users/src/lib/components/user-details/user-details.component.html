@@ -1,1 +1,17 @@
-<p>user-details works!</p>
+<div class="container">
+    <div class="row" *ngIf="user$ | async as user">
+        <div class="col">
+            <h6>User detail</h6>
+            <ul class="list-group">
+                <li class="list-group-item"><b>Name:</b> {{ user.data.first_name }} {{ user.data.last_name }}</li>
+                <li class="list-group-item"><b>Email:</b> {{ user.data.email }}</li>
+                <li class="list-group-item"><b>Language:</b> {{ user.data.language.main }}</li>
+                <li class="list-group-item"><b>Created At:</b> {{ user.data.created_at | date }}</li>
+            </ul>
+        </div>
+        <div class="action d-flex justify-content-end">
+            <button class="w-10 btn btn-primary" type="reset" [routerLink]="['/users']">Back</button>
+            <button type="button" class="btn btn-primary" (click)="editUser(user.data.id)">Edit</button>
+        </div>
+    </div>
+</div>

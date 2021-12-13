@@ -1,5 +1,5 @@
 <main class="form-signin text-center">
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form [formGroup]="loginForm">
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
         <div class="form-floating">
             <input
@@ -13,8 +13,8 @@
         </div>
 
         <app-alert alertType="danger" *ngIf="emailField.errors && emailField.touched">
-            <ng-container *ngIf="emailField.errors?.required">This is a required field</ng-container>
-            <ng-container *ngIf="emailField.errors?.pattern">invalid e-mail address</ng-container>
+            <ng-container *ngIf="emailField.errors.required">This is a required field</ng-container>
+            <ng-container *ngIf="emailField.errors.pattern">Invalid e-mail address</ng-container>
         </app-alert>
 
         <div class="form-floating">
@@ -29,10 +29,16 @@
         </div>
 
         <app-alert alertType="danger" *ngIf="passwordField.errors && passwordField.touched">
-            <ng-container *ngIf="passwordField.errors?.required">This is a required field</ng-container>
+            <ng-container *ngIf="passwordField.errors.required">This is a required field</ng-container>
         </app-alert>
 
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <app-alert alertType="danger" *ngIf="showError">
+            <ng-container>Something wrong please try again</ng-container>
+        </app-alert>
+
+        <button class="w-100 btn btn-lg btn-primary" type="button" [disabled]="!loginForm.valid" (click)="login()">
+            Sign in
+        </button>
         <p class="mt-5 mb-3 text-muted">&copy; 2021 and beyond :)</p>
     </form>
 </main>
