@@ -1,3 +1,5 @@
+import { UnSubscriptionComponent } from './unsubscribe';
+
 describe('UnSubscriptionComponent', () => {
     const directive = new UnSubscriptionComponent();
 
