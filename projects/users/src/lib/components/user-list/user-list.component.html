@@ -3,7 +3,7 @@
     <tr *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: page }; let index = index">
         <td>{{ user.first_name }}</td>
         <td>{{ user.last_name }}</td>
-        <td>{{ user.gender_id }}</td>
+        <td>{{ user.gender_id | gender }}</td>
         <td>{{ user.email }}</td>
         <td (click)="showUserDetails(user.id)">Edit</td>
         <td (click)="deleteUser(user.id)">X</td>
