@@ -1,6 +1,13 @@
 <!-- Todo:: add config interface -->
+<h2>Users List</h2>
 <app-table [head]="head" *ngIf="users$ | async as users">
-    <tr *ngFor="let user of users | paginate: { itemsPerPage: 5, currentPage: page }; let index = index">
+    <tr
+        *ngFor="
+            let user of users | paginate: { itemsPerPage: 5, currentPage: page };
+            let index = index;
+            trackBy: trackById
+        "
+    >
         <td>{{ user.first_name }}</td>
         <td>{{ user.last_name }}</td>
         <td>{{ user.gender_id | gender }}</td>

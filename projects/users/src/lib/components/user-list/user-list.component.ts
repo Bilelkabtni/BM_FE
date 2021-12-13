@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUsers } from '@services/home.service';
+import { UnSubscriptionComponent } from '@shared/utils/unsubscribe';
 import { HomeService } from 'projects/home/src/public-api';
 import { Observable } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { UserService } from '../../user.service';
 
 @Component({
@@ -10,13 +12,15 @@ import { UserService } from '../../user.service';
     templateUrl: './user-list.component.html',
     styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent extends UnSubscriptionComponent implements OnInit {
     users$: Observable<IUsers[]>;
     tableData: any[] = [];
     head = ['First name', 'Last name', 'Gender', 'email'];
     page = 1;
 
-    constructor(private homeService: HomeService, private router: Router, private userService: UserService) {}
+    constructor(private homeService: HomeService, private router: Router, private userService: UserService) {
+        super();
+    }
 
     ngOnInit(): void {
         this.users$ = this.homeService.getUsers();
@@ -32,8 +36,15 @@ export class UserListComponent implements OnInit {
             return;
         }
 
-        this.userService.deleteUser(userId).subscribe((_) => {
-            this.users$ = this.homeService.getUsers();
-        });
+        this.userService
+            .deleteUser(userId)
+            .pipe(takeUntil(this.unsubscribe$))
+            .subscribe((_) => {
+                this.users$ = this.homeService.getUsers();
+            });
+    }
+
+    trackById(item, index): number {
+        return item.id;
     }
 }

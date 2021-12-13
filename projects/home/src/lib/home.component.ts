@@ -18,4 +18,8 @@ export class HomeComponent implements OnInit {
         this.projects$ = this.homeService.getProjects();
     }
     constructor(private readonly homeService: HomeService) {}
+
+    trackById(item, index): number {
+        return item.id;
+    }
 }

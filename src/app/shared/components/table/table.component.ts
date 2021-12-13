@@ -8,4 +8,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class TableComponent {
     @Input() head: string[] = [];
+
+    trackByIndex(item, index): number {
+        return index;
+    }
 }

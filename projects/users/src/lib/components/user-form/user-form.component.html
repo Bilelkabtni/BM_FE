@@ -64,7 +64,9 @@
         <div class="form-floating">
             <select id="floatingGender" formControlName="gender_id" class="form-select">
                 <option>Gender selection</option>
-                <option [value]="gender.id" *ngFor="let gender of genders$ | async">{{ gender.name }}</option>
+                <option [value]="gender.id" *ngFor="let gender of genders$ | async; trackBy: trackById">
+                    {{ gender.name }}
+                </option>
             </select>
 
             <label for="floatingGender">Gender</label>

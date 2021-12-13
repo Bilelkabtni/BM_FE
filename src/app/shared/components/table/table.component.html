@@ -1,7 +1,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col" *ngFor="let item of head">{{ item }}</th>
+            <th scope="col" *ngFor="let item of head; trackBy: trackByIndex">{{ item }}</th>
         </tr>
     </thead>
     <tbody>

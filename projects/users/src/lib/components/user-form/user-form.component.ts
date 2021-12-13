@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UnSubscriptionComponent } from '@shared/utils/unsubscribe';
 import { IGenders, UserService } from 'projects/users/src/lib/user.service';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, first } from 'rxjs/operators';
+import { catchError, takeUntil } from 'rxjs/operators';
 import { EMAIL_REGEX } from 'src/app/auth/login/email-regex';
 import { Users } from '../../models/user.model';
 
@@ -12,7 +13,7 @@ import { Users } from '../../models/user.model';
     templateUrl: './user-form.component.html',
     styleUrls: ['./user-form.component.scss'],
 })
-export class UserFormComponent implements OnInit {
+export class UserFormComponent extends UnSubscriptionComponent implements OnInit {
     @Input() user: Users;
     @Input() isEdit: boolean = false;
 
@@ -31,7 +32,9 @@ export class UserFormComponent implements OnInit {
     genders$: Observable<IGenders[]>;
     showError = false;
 
-    constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {}
+    constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
+        super();
+    }
 
     ngOnInit(): void {
         this.genders$ = this.userService.getGender();
@@ -70,11 +73,11 @@ export class UserFormComponent implements OnInit {
             this.userService
                 .createUser(this.userForm.value)
                 .pipe(
-                    first(),
                     catchError((_) => {
                         this.showError = true;
                         return EMPTY;
-                    })
+                    }),
+                    takeUntil(this.unsubscribe$)
                 )
                 .subscribe((_) => {
                     this.router.navigate(['/users']);
@@ -84,16 +87,20 @@ export class UserFormComponent implements OnInit {
             this.userService
                 .updateUser(this.userForm.value, this.user.id)
                 .pipe(
-                    first(),
                     catchError((_) => {
                         this.showError = true;
                         return EMPTY;
-                    })
+                    }),
+                    takeUntil(this.unsubscribe$)
                 )
                 .subscribe((_) => {
                     this.router.navigate(['/users']);
                     this.userService.refreshed$.next(true);
                 });
         }
+    }
+
+    trackById(item, index): number {
+        return item.id;
     }
 }
