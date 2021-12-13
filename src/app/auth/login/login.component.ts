@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EMPTY } from 'rxjs';
@@ -11,7 +11,6 @@ import { EMAIL_REGEX } from './email-regex';
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
     loginForm: FormGroup = new FormGroup({
